@@ -1,6 +1,10 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
+
+// Required to make app work with Heroku using PORT varialble or if local it used 3000
+const port = process.env.PORT || 3000;
+
 // Make a new exress app
 var app = express();
 
@@ -56,6 +60,6 @@ app.get('/bad', (req, res) => {
   res.send({errorMessage: "unable to fufill this request"})
 });
 
-app.listen(3000, () => {
-  console.log("Server is up and running on port 3000.")
+app.listen(port, () => {
+  console.log(`Server is up and running on port ${port}.`)
 }); //Binds app to port on machine
